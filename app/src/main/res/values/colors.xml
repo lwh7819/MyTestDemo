@@ -5,4 +5,5 @@
     <color name="colorAccent">#FF4081</color>
     <color name="main_color">#FF01A2EC</color>
     <color name="player_blue2">#0099cc</color>
+    <color name="gray">#cccccc</color>
 </resources>
