@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="QRCodeView">
+        <attr name="content" format="reference" />
+        <attr name="widthDP" format="dimension" />
+        <attr name="heightDP" format="dimension" />
+        <attr name="logo" format="reference" />
+    </declare-styleable>
+
+    <!--拓展TextView的属性-->
+    <declare-styleable name="ExpandTextView">
+        <attr name="expand" format="boolean"/>
+        <attr name="expand_text" format="string"/>
+        <attr name="expand_color" format="string"/>
+        <attr name="expand_position" format="string"/>
+    </declare-styleable>
+
+    <declare-styleable name="CommonInspectRow">
+        <attr name="title_text" format="string"/>
+        <attr name="is_required" format="boolean"/>
+    </declare-styleable>
+</resources>
