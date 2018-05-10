@@ -19,6 +19,7 @@
         </activity>
         <activity android:name=".glide.GlideTestActivity"/>
         <activity android:name=".excem.TopicActivity"/>
+        <activity android:name=".cardview.CardViewActivity"/>
     </application>
 
 </manifest>

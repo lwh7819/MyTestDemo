@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <ImageView
+            android:background="@color/main_color"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"/>
+
+    <LinearLayout
+            android:id="@+id/m_card_view"
+            android:background="@drawable/login_ll_bg"
+            android:orientation="vertical"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+
+        <TextView
+                android:text="@string/user_name"
+                android:textColor="@color/dark_gray"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="43dp"
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <com.cd.mytestdemo.cardview.AddAndSubEditText
+                    android:id="@+id/m_edt_user_name"
+                    android:hint="@string/user_name_hint"
+                    android:textSize="14sp"
+                    android:theme="@style/MyEditText"
+                    android:drawableRight="@mipmap/ic_persion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <TextView
+                android:text="@string/password"
+                android:textColor="@color/dark_gray"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="43dp"
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <EditText
+                    android:hint="@string/password_hint"
+                    android:textSize="14sp"
+                    android:theme="@style/MyEditText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"/>
+
+            <Button
+                    android:text="@string/get_password"
+                    android:background="@drawable/common_btn_bg"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    android:layout_width="90dp"
+                    android:layout_height="25dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+            android:id="@+id/login"
+            android:text="@string/login"
+            android:layout_below="@+id/m_card_view"
+            android:background="@drawable/login_btn_bg"
+            android:textColor="@color/white"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="-24dp"
+            android:layout_marginLeft="83dp"
+            android:layout_marginRight="83dp"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"/>
+</RelativeLayout>

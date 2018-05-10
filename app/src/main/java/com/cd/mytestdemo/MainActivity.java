@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import com.cd.mytestdemo.cardview.CardViewActivity;
 import com.cd.mytestdemo.excem.TopicActivity;
 import com.cd.mytestdemo.glide.GlideTestActivity;
 
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(this, GlideTestActivity.class));
                 break;
             case R.id.entry_2:
+                startActivity(new Intent(this, CardViewActivity.class));
                 break;
             case R.id.entry_3:
                 startActivity(new Intent(this, TopicActivity.class));

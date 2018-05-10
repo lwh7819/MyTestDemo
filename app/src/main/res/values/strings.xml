@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">MyTestDemo</string>
     <string name="topic1">当有一天三不在是三的时候，那么四是几呢______，如过有一天四不是四，十不是十那么到底你是什么呢______？</string>
+    <string name="login">登录</string>
+    <string name="user_name">用户名</string>
+    <string name="user_name_hint">输入手机号</string>
+    <string name="password">验证码</string>
+    <string name="password_hint">输入验证码</string>
+    <string name="get_password">获取验证码</string>
 </resources>
