@@ -82,11 +82,11 @@ public class ExpandTextView extends TextView {
         int bgColor = Color.WHITE;
         switch (type) {
             case 1:
-                typeText = "普通";
+                typeText = "单选";
                 bgColor = Color.parseColor("#FF00FF00");
                 break;
             case 2:
-                typeText = "一般";
+                typeText = "多选";
                 bgColor = Color.parseColor("#44acf4");
                 break;
             case 3:
