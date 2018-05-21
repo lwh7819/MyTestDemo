@@ -3,8 +3,12 @@
           package="com.cd.mytestdemo">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
     <application
+            android:name=".common.view.base.MyApp"
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
@@ -20,6 +24,9 @@
         <activity android:name=".glide.GlideTestActivity"/>
         <activity android:name=".excem.TopicActivity"/>
         <activity android:name=".cardview.CardViewActivity"/>
+        <activity android:name=".testfragment.TestFragmentActivity"/>
+        <activity android:name=".bluetooth.BluetoothActivity"/>
+        <activity android:name=".dialog.DialogActivity"/>
     </application>
 
 </manifest>

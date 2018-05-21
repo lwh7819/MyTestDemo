@@ -13,4 +13,40 @@
         <item name="colorControlActivated">@color/main_color</item>
     </style>
 
+    <style name="NavigationBarStyle">
+        <item name="android:background">@color/main_color</item>
+        <item name="android:minHeight">52dp</item>
+    </style>
+
+    <style name="NavigationBarTitleStyle">
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">middle</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="NavigationBarButtonStyle">
+        <item name="android:background">@null</item>
+        <item name="android:minHeight">16dp</item>
+        <item name="android:minWidth">16dp</item>
+        <item name="android:drawablePadding">4dp</item>
+        <item name="android:textColor">@color/navigation_bar_btn_text_color</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+    
+    <style name="Code_Dialog" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowIsFloating">true</item>    <!--是否浮在界面上-->
+        <item name="android:windowIsTranslucent">true</item> <!--是否半透明-->
+        <item name="android:windowNoTitle">false</item>       <!--是否有标题-->
+        <item name="android:windowBackground">@android:color/transparent</item> <!--窗口背景色透明-->
+        <item name="android:backgroundDimEnabled">true</item> <!--背景是否模糊显示-->
+    </style>
+
+    <!-- dialog底部弹出菜单动画 -->
+    <style name="bottom_menu_animation" parent="android:Animation">
+        <item name="@android:windowEnterAnimation">@anim/bottom_menu_enter</item>
+        <item name="@android:windowExitAnimation">@anim/bottom_menu_exit</item>
+    </style>
+
 </resources>

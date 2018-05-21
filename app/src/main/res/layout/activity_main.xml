@@ -47,5 +47,41 @@
             android:inputType="text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+
+    <Button
+            android:id="@+id/entry_4"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="8dp"
+            android:text="TestFragmetn"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            android:inputType="text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    <Button
+            android:id="@+id/entry_5"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="8dp"
+            android:text="Bluetooth"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            android:inputType="text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    <Button
+            android:id="@+id/entry_6"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="8dp"
+            android:text="Dialog"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            android:inputType="text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 </LinearLayout>
 </ScrollView>
