@@ -12,6 +12,7 @@ import com.cd.mytestdemo.dialog.DialogActivity;
 import com.cd.mytestdemo.excem.TopicActivity;
 import com.cd.mytestdemo.glide.GlideTestActivity;
 import com.cd.mytestdemo.testfragment.TestFragmentActivity;
+import com.cd.mytestdemo.viewpage.ViewPageActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @OnClick({R.id.entry_1, R.id.entry_2, R.id.entry_3, R.id.entry_4, R.id.entry_5, R.id.entry_6})
+    @OnClick({R.id.entry_1, R.id.entry_2, R.id.entry_3, R.id.entry_4, R.id.entry_5, R.id.entry_6, R.id.entry_7})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.entry_1:
@@ -44,6 +45,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.entry_6:
                 startActivity(new Intent(this, DialogActivity.class));
+                break;
+            case R.id.entry_7:
+                startActivity(new Intent(this, ViewPageActivity.class));
                 break;
         }
     }

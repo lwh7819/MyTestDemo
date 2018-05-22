@@ -27,6 +27,7 @@
         <activity android:name=".testfragment.TestFragmentActivity"/>
         <activity android:name=".bluetooth.BluetoothActivity"/>
         <activity android:name=".dialog.DialogActivity"/>
+        <activity android:name=".viewpage.ViewPageActivity"/>
     </application>
 
 </manifest>
