@@ -22,14 +22,9 @@
 
     <declare-styleable name="ViewPagerIndicator">
         <attr format="reference" name="vpiCirclePageIndicatorStyle"/>
-        <attr format="reference" name="vpiIconPageIndicatorStyle"/>
-        <attr format="reference" name="vpiLinePageIndicatorStyle"/>
-        <attr format="reference" name="vpiTitlePageIndicatorStyle"/>
-        <attr format="reference" name="vpiTabPageIndicatorStyle"/>
-        <attr format="reference" name="vpiUnderlinePageIndicatorStyle"/>
     </declare-styleable>
 
-    <declare-styleable name="CirclePageIndicator">
+    <declare-styleable name="MyCircleMyPageIndicator">
         <attr format="boolean" name="centered"/>
         <attr format="color" name="fillColor"/>
         <attr format="color" name="pageColor"/>

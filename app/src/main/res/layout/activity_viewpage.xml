@@ -16,7 +16,7 @@
 
     </android.support.v4.view.ViewPager>
 
-    <com.cd.mytestdemo.viewpage.CirclePageIndicator
+    <com.cd.mytestdemo.viewpage.MyCircleMyPageIndicator
             android:id="@+id/cp_circle"
             android:layout_height="20dp"
             android:layout_width="match_parent"
@@ -27,7 +27,7 @@
             app:pageColor="@color/gray"
             app:strokeWidth="0dp">
 
-    </com.cd.mytestdemo.viewpage.CirclePageIndicator>
+    </com.cd.mytestdemo.viewpage.MyCircleMyPageIndicator>
 
     </RelativeLayout>
 

@@ -3,10 +3,10 @@ package com.cd.mytestdemo.viewpage;
 import android.support.v4.view.ViewPager;
 
 /**
- * A PageIndicator is responsible to show an visual indicator on the total views
+ * A MyPageIndicator is responsible to show an visual indicator on the total views
  * number and the current visible view.
  */
-public interface PageIndicator extends ViewPager.OnPageChangeListener {
+public interface MyPageIndicator extends ViewPager.OnPageChangeListener {
     /**
      * Bind the indicator to a ViewPager.
      *

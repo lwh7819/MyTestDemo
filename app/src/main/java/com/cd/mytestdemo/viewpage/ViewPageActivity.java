@@ -18,7 +18,7 @@ public class ViewPageActivity extends AppCompatActivity {
     @BindView(R.id.m_view_page)
     ViewPager mViewPage;
     @BindView(R.id.cp_circle)
-    CirclePageIndicator cpCircle;
+    MyCircleMyPageIndicator cpCircle;
 
     private ArrayList<String> urls = new ArrayList<>();
     private CompositeDisposable compositeDisposable;
