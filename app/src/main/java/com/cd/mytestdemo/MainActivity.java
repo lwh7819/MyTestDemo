@@ -11,6 +11,7 @@ import com.cd.mytestdemo.cardview.CardViewActivity;
 import com.cd.mytestdemo.dialog.DialogActivity;
 import com.cd.mytestdemo.excem.TopicActivity;
 import com.cd.mytestdemo.glide.GlideTestActivity;
+import com.cd.mytestdemo.progressView.ProgressActivity;
 import com.cd.mytestdemo.tbs.TbsActivity;
 import com.cd.mytestdemo.testfragment.TestFragmentActivity;
 import com.cd.mytestdemo.towEnResult.TowEnResultActivity;
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @OnClick({R.id.entry_1, R.id.entry_2, R.id.entry_3, R.id.entry_4, R.id.entry_5, R.id.entry_6, R.id.entry_7
-            , R.id.entry_8, R.id.entry_9})
+            , R.id.entry_8, R.id.entry_9, R.id.entry_10})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.entry_1:
@@ -57,6 +58,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.entry_9:
                 startActivity(new Intent(this, TbsActivity.class));
+                break;
+            case R.id.entry_10:
+                startActivity(new Intent(this, ProgressActivity.class));
                 break;
         }
     }
