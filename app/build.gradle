@@ -6,7 +6,7 @@ android {
     buildToolsVersion "27.0.3"
     defaultConfig {
         applicationId "com.cd.mytestdemo"
-        minSdkVersion 21
+        minSdkVersion 19
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -50,8 +50,6 @@ dependencies {
     //RXJava
     compile 'io.reactivex.rxjava2:rxjava:2.1.0'
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
-
-    compile(name: 'app-debug', ext: 'aar')
 
     compile 'com.lzy.net:okgo:2.1.4'
 

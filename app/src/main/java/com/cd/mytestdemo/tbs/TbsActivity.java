@@ -13,13 +13,14 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.cd.mytestdemo.MainActivity;
 import com.cd.mytestdemo.R;
-import com.cd.testlibirary.net.HttpClient;
+import com.cd.mytestdemo.common.view.util.PopUtil;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.FileCallback;
 import com.tencent.smtt.sdk.TbsReaderView;
 import okhttp3.Response;
 
 import java.io.File;
+import java.util.HashMap;
 
 /**
  * Created by lv.weihao on 2018/6/7.
@@ -61,7 +62,7 @@ public class TbsActivity extends AppCompatActivity implements TbsReaderView.Read
 
     private void initDoc(String docUrl, final String download) {
         int i = docUrl.lastIndexOf("/");
-        String docName = docUrl.substring(i, docUrl.length());
+        final String docName = docUrl.substring(i, docUrl.length());
         Log.d("print", "---substring---" + docName);
 
         //判断是否在本地/[下载/直接打开]
@@ -79,7 +80,7 @@ public class TbsActivity extends AppCompatActivity implements TbsReaderView.Read
                         public void onSuccess(File file, okhttp3.Call call, Response response) {
                             // file 即为文件数据，文件保存在指定目录
                             Log.d("print", "下载文件成功");
-                            displayFile(download + file.getName(), file.getName());
+                            displayFile(file.toString(), docName);
                             Log.d("print", "" + file.getName());
                         }
 
@@ -110,6 +111,7 @@ public class TbsActivity extends AppCompatActivity implements TbsReaderView.Read
         boolean result = mTbsReaderView.preOpen(getFileType(fileName), false);
         Log.d("print", "查看文档---" + result);
         if (result) {
+            Log.e("lwh", Thread.currentThread().getName());
             mTbsReaderView.openFile(bundle);
         } else {
 
