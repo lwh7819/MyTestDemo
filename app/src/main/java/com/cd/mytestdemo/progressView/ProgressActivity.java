@@ -34,9 +34,17 @@ public class ProgressActivity extends AppCompatActivity {
         mList.add("肥胖");
         mList.add("非常非常肥胖");
 
+        List<String> mList2 = new ArrayList<String>();
+        mList2.add("过轻");
+        mList2.add("正常");
+        mList2.add("过重");
+        mList2.add("肥胖");
+        mList2.add("非常非常肥胖");
+        mList2.add("非常非常非常的肥胖");
+
         mProgressView.setTypeTitleList(mList);
         mProgressView.invalidate();
-        mProgressView2.setTypeTitleList(mList);
+        mProgressView2.setTypeTitleList(mList2);
         mProgressView2.invalidate();
 
     }

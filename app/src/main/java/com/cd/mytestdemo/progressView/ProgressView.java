@@ -51,39 +51,38 @@ public class ProgressView extends View {
         super.onDraw(canvas);
 
         if (typeTitleList != null) {
-            int screenWidth = canvas.getWidth();
+            int screenWidth = canvas.getWidth() - canvas.getWidth() / 10;
             int screenHeight = canvas.getHeight();
             Log.e("lwh", "width:" + screenWidth + "height:" + screenHeight);
 
             int startLeft = 0;
-            int startTop = 0;
+            int startTop = 100;
             int startRight = screenWidth / getCount();
-            int startBottom = 100;
+            int startBottom = 200;
 
             Paint paint = new Paint();
             paint.setAntiAlias(true);
             paint.setStyle(Paint.Style.FILL);
             paint.setColor(Color.parseColor(colors[0]));
-            canvas.drawColor(Color.RED);
 
             /**
              * 绘制外层背景
              */
             RectF rectF = new RectF(startLeft, startTop, startRight, startBottom);
-            RectF rectFAng = new RectF(startRight - startBottom / 2, startTop, startRight, startBottom);
+            RectF rectFAng = new RectF(startRight - (startBottom - startTop) / 2, startTop, startRight, startBottom);
 
             for (int i = 0; i < getCount(); i++) {
                 int maxIndex = getCount() - 1;
                 paint.setColor(Color.parseColor(colors[i]));
                 if (i == 0) {
-                    canvas.drawRoundRect(rectF, startBottom / 2, startBottom / 2, paint);
+                    canvas.drawRoundRect(rectF, (startBottom - startTop) / 2, (startBottom - startTop) / 2, paint);
                     canvas.drawRect(rectFAng, paint);
                 } else if (i == maxIndex) {
                     rectF.left = startRight * maxIndex;
                     rectF.right = startRight * (maxIndex + 1);
                     rectFAng.left = startRight * maxIndex;
                     rectFAng.right = startRight * maxIndex + startBottom / 2;
-                    canvas.drawRoundRect(rectF, startBottom / 2, startBottom / 2, paint);
+                    canvas.drawRoundRect(rectF, (startBottom - startTop) / 2, (startBottom - startTop) / 2, paint);
                     canvas.drawRect(rectFAng, paint);
                 } else {
                     rectF.left = startRight * i;
@@ -97,17 +96,20 @@ public class ProgressView extends View {
              */
             int centerHeight = startBottom / 10;
             paint.setColor(Color.WHITE);
-            RectF rectFCenterWhite = new RectF(startLeft + startBottom / 3, startTop + startBottom / 2 - centerHeight / 2,
-                    startRight * getCount() - startBottom / 3, startTop + startBottom / 2 + centerHeight / 2);
+            RectF rectFCenterWhite = new RectF(startLeft + (startBottom - startTop) / 3, startTop + (startBottom - startTop) / 2 - centerHeight / 2,
+                    startRight * getCount() - (startBottom - startTop) / 3, startTop + (startBottom - startTop) / 2 + centerHeight / 2);
             canvas.drawRoundRect(rectFCenterWhite, centerHeight / 2, centerHeight / 2, paint);
 
         /*
         * 绘制进度
         */
+            double posenct = 1;
+            int postion = (int)(((startBottom - startTop) / 3) +
+                    ((screenWidth - (startBottom - startTop) * 2 / 3) * posenct));
             int progressHeight = startBottom / 20;
             paint.setColor(Color.parseColor(colors[10]));
-            Rect rectProgress = new Rect(startLeft + startBottom / 3 + progressHeight / 2, startTop + startBottom / 2 - progressHeight / 2,
-                    startRight * 2, startTop + startBottom / 2 + progressHeight / 2);
+            Rect rectProgress = new Rect(startLeft + (startBottom - startTop) / 3 + progressHeight / 2, startTop + (startBottom - startTop) / 2 - progressHeight / 2,
+                    postion, startTop + (startBottom - startTop) / 2 + progressHeight / 2);
             canvas.drawRect(rectProgress, paint);
 
             /**
@@ -130,8 +132,15 @@ public class ProgressView extends View {
                 sl.draw(canvas);
             }
 
+            canvas.translate(-(dp2px(4) + startRight * (getCount() - 1)), - (startBottom + dp2px(8)));
+            canvas.translate(postion - dp2px(5), dp2px(5));
             canvas.drawBitmap(BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_porper),
                     0, 0, paint);
+
+            textPaint.setTextSize(sp2px(12));
+            sl = new StaticLayout("30.09", textPaint, dp2px(40), Layout.Alignment.ALIGN_CENTER, 1.0f, 0.0f, true);
+            canvas.translate(dp2px(2), dp2px(5));
+            sl.draw(canvas);
         }
     }
 
@@ -170,7 +179,7 @@ public class ProgressView extends View {
         if (heightMode == MeasureSpec.EXACTLY) {
             height = heightSize;
         } else {
-            float textHeight = dp2px(100);
+            float textHeight = dp2px(150);
             height = (int) (getPaddingTop() + textHeight + getPaddingBottom());
         }
         //保存测量宽度和测量高度
