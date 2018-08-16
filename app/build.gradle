@@ -53,4 +53,6 @@ dependencies {
 
     compile 'com.lzy.net:okgo:2.1.4'
 
+    compile 'com.jakewharton:disklrucache:2.0.2'
+
 }

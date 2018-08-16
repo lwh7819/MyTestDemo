@@ -35,4 +35,17 @@
         <attr format="dimension" name="strokeWidth"/>
         <attr name="android:background"/>
     </declare-styleable>
+
+    <declare-styleable name="MyProgressView">
+        <attr name="outBarHeight" format="integer"/>
+        <attr name="centerBarHeight" format="integer"/>
+        <attr name="progressBarHeight" format="integer"/>
+        <attr name="percent" format="integer"/>
+        <attr name="progressColor" format="color"/>
+        <attr name="titleTextColor" format="color"/>
+        <attr name="progressTextColor" format="color"/>
+        <attr name="titleTextSize" format="integer"/>
+        <attr name="progressTextSize" format="integer"/>
+        <attr name="progressText" format="string"/>
+    </declare-styleable>
 </resources>

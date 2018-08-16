@@ -1,5 +1,6 @@
 package com.cd.mytestdemo.progressView;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.LinearLayout;
@@ -20,6 +21,8 @@ public class ProgressActivity extends AppCompatActivity {
     ProgressView mProgressView;
     @BindView(R.id.m_progress_view2)
     ProgressView mProgressView2;
+    @BindView(R.id.m_progress_view3)
+    ProgressViewRect mProgressView3;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,9 +46,19 @@ public class ProgressActivity extends AppCompatActivity {
         mList2.add("非常非常非常的肥胖");
 
         mProgressView.setTypeTitleList(mList);
-        mProgressView.invalidate();
+        mProgressView.setPercent(90);
+        mProgressView.setProgressColor(Color.RED);
         mProgressView2.setTypeTitleList(mList2);
-        mProgressView2.invalidate();
+        mProgressView2.setPercent(50);
+        mProgressView2.setProgressBarHeight(1);
+        mProgressView2.setProgressText("27.63");
 
+        mProgressView3.setProgressText("27.63");
+        mProgressView3.setTypeTitleList(mList2);
+
+//        ProgressViewRect progressViewRect = new ProgressViewRect(this, mList2);
+//        progressViewRect.setPercent(100);
+//        progressViewRect.setProgressText("60/180");
+//        contentView.addView(progressViewRect);
     }
 }

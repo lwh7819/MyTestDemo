@@ -19,8 +19,8 @@ import java.util.List;
 /**
  * Created by lv.weihao on 2018/6/29.
  */
-public class ProgressView extends View {
-    public static final  String colors[] = {"#3aa1ff", "#7dc0ff", "#5ddfcf", "#4ecb73", "#84e0a0", "#a9ea74",
+public class ProgressViewRect extends View {
+    public static final  String colors[] = {"#72ccf6", "#91e364", "#fcc569", "#ee7c68", "#d53c22", "#991b05",
             "#fbd437", "#eeb68d", "#5baf74", "#273777", "#778ce7", "#8879d1",
             "#975fe5", "#b58bf0", "#749fea", "#36cbcb", "#85e5e5", "#74b1ea",
             "#5254cf", "#9395ff", "#e294ea", "#f2637b", "#fb90a2", "#dba7df",
@@ -31,9 +31,6 @@ public class ProgressView extends View {
     private List<String> typeTitleList;
 
     private int outBarHeight = 40;
-    private int centerBarHeight = 4;
-    private int progressBarHeight = 2;
-    private int progressColor = Color.BLUE;
     private int titleTextColor = Color.parseColor("#666666");
     private int progressTextColor = Color.parseColor("#666666");
     private int titleTextSize = 15;
@@ -43,23 +40,17 @@ public class ProgressView extends View {
     private int postion;
     private ObjectAnimator objectAnimator;
 
-    public ProgressView(Context context, List<String> typeTitleList) {
+    public ProgressViewRect(Context context, List<String> typeTitleList) {
         super(context);
         this.context = context;
-        this.typeTitleList = typeTitleList;
-        if (typeTitleList == null) {
-            typeTitleList = new ArrayList<>();
-        }
+        this.typeTitleList = typeTitleList == null ? new ArrayList<String>() : typeTitleList;
     }
 
-    public ProgressView(Context context, AttributeSet attrs) {
+    public ProgressViewRect(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
         TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.MyProgressView);
         outBarHeight = array.getInteger(R.styleable.MyProgressView_outBarHeight, 40);
-        centerBarHeight = array.getInteger(R.styleable.MyProgressView_centerBarHeight, 4);
-        progressBarHeight = array.getInteger(R.styleable.MyProgressView_progressBarHeight, 2);
-        progressColor = array.getColor(R.styleable.MyProgressView_progressColor, Color.BLUE);
         titleTextColor = array.getColor(R.styleable.MyProgressView_titleTextColor, Color.parseColor("#666666"));
         progressTextColor = array.getColor(R.styleable.MyProgressView_progressTextColor, Color.parseColor("#666666"));
         titleTextSize = array.getInteger(R.styleable.MyProgressView_titleTextSize, 15);
@@ -68,7 +59,7 @@ public class ProgressView extends View {
         progressText = array.getString(R.styleable.MyProgressView_progressText) == null ? "" : array.getString(R.styleable.MyProgressView_progressText);
     }
 
-    public ProgressView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ProgressViewRect(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         this.context = context;
     }
@@ -78,13 +69,15 @@ public class ProgressView extends View {
         super.onDraw(canvas);
 
         if (typeTitleList != null) {
-            int screenWidth = canvas.getWidth() - canvas.getWidth() / 10;
+            int imgWidth = getImageWidthHeight()[0];
+            int screenWidth = canvas.getWidth() - imgWidth;
             int screenHeight = canvas.getHeight();
             Log.e("lwh", "width:" + screenWidth + "height:" + screenHeight);
 
-            int startLeft = 0;
+            int startLeft = imgWidth / 2;
             int startTop = 100;
-            int startRight = screenWidth / getCount();
+            int weight = screenWidth / getCount();
+            int startRight = startLeft + weight;
             int startBottom = startTop + dp2px(outBarHeight);
 
             Paint paint = new Paint();
@@ -96,52 +89,15 @@ public class ProgressView extends View {
              * 绘制外层背景
              */
             RectF rectF = new RectF(startLeft, startTop, startRight, startBottom);
-            RectF rectFAng = new RectF(startRight - (startBottom - startTop) / 2, startTop, startRight, startBottom);
 
             for (int i = 0; i < getCount(); i++) {
-                int maxIndex = getCount() - 1;
                 paint.setColor(Color.parseColor(colors[i]));
-                if (i == 0) {
-                    canvas.drawRoundRect(rectF, (startBottom - startTop) / 2, (startBottom - startTop) / 2, paint);
-                    canvas.drawRect(rectFAng, paint);
-                } else if (i == maxIndex) {
-                    rectF.left = startRight * maxIndex;
-                    rectF.right = startRight * (maxIndex + 1);
-                    rectFAng.left = startRight * maxIndex;
-                    rectFAng.right = startRight * maxIndex + (startBottom - startTop) / 2;
-                    canvas.drawRoundRect(rectF, (startBottom - startTop) / 2, (startBottom - startTop) / 2, paint);
-                    canvas.drawRect(rectFAng, paint);
-                } else {
-                    rectF.left = startRight * i;
-                    rectF.right = startRight * (i + 1);
-                    canvas.drawRect(rectF, paint);
+                if (i != 0) {
+                    rectF.left = startLeft + weight * i;
+                    rectF.right = startLeft + weight * (i + 1);
                 }
+                canvas.drawRect(rectF, paint);
             }
-
-            /**
-             * 绘制内层背景
-             */
-            int centerHeight = dp2px(centerBarHeight);
-            paint.setColor(Color.WHITE);
-            RectF rectFCenterWhite = new RectF(startLeft + (startBottom - startTop) / 3, startTop + (startBottom - startTop) / 2 - centerHeight / 2,
-                    startRight * getCount() - (startBottom - startTop) / 3, startTop + (startBottom - startTop) / 2 + centerHeight / 2);
-            canvas.drawRoundRect(rectFCenterWhite, centerHeight / 2, centerHeight / 2, paint);
-
-        /*
-        * 绘制进度
-        */
-            float percentD = percent / 100f;
-            int progressHeight = dp2px(progressBarHeight);
-            int end = (int)(((startBottom - startTop) / 3) +
-                    ((screenWidth - (startBottom - startTop) * 2 / 3) * percentD));
-            if (objectAnimator == null) {
-                doAnimater(startLeft + (startBottom - startTop) / 3 + progressHeight / 2, end);
-            }
-            Log.e("lwhh", postion + "");
-            paint.setColor(progressColor);
-            Rect rectProgress = new Rect(startLeft + (startBottom - startTop) / 3 + progressHeight / 2, startTop + (startBottom - startTop) / 2 - progressHeight / 2,
-                    postion, startTop + (startBottom - startTop) / 2 + progressHeight / 2);
-            canvas.drawRect(rectProgress, paint);
 
             /**
              * 绘制下标文字
@@ -152,25 +108,37 @@ public class ProgressView extends View {
             StaticLayout sl;
             for (int j = 0; j < getCount(); j++) {
                 int height = startBottom + dp2px(8);
-                int width = 0 + dp2px(4);
+                int width = startLeft + dp2px(4);
                 if (j != 0) {
                     height = 0;
-                    width = startRight;
+                    width = weight;
                 }
                 canvas.save();
-                sl = new StaticLayout(getTitle(j), textPaint, startRight - dp2px(4), Layout.Alignment.ALIGN_CENTER, 1.0f, 0.0f, true);
+                sl = new StaticLayout(getTitle(j), textPaint, weight - dp2px(4), Layout.Alignment.ALIGN_CENTER, 1.0f, 0.0f, true);
                 canvas.translate(width, height);
                 sl.draw(canvas);
             }
 
-            canvas.translate(-(dp2px(4) + startRight * (getCount() - 1)), - (startBottom + dp2px(8)));
-            canvas.translate(postion - dp2px(5), dp2px(5));
-            canvas.drawBitmap(BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_porper),
+            /**
+             * 绘制图片
+             */
+            float percentD = percent / 100f;
+            int end = (int) (screenWidth * percentD);
+            if (objectAnimator == null) {
+                doAnimater(0, end);
+            }
+            Log.e("lwhh", postion + "");
+            canvas.translate(-(dp2px(4) + startLeft + weight * (getCount() - 1)), - (startBottom + dp2px(8)));
+            canvas.translate(postion, dp2px(5));
+            canvas.drawBitmap(BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_location),
                     0, 0, paint);
 
+            /**
+             * 绘制图片里的文字
+             */
             textPaint.setTextSize(sp2px(progressTextSize));
             textPaint.setColor(progressTextColor);
-            sl = new StaticLayout(progressText, textPaint, dp2px(40), Layout.Alignment.ALIGN_CENTER, 1.0f, 0.0f, true);
+            sl = new StaticLayout(progressText, textPaint, dp2px(20), Layout.Alignment.ALIGN_CENTER, 1.0f, 0.0f, true);
             canvas.translate(dp2px(2), dp2px(5));
             sl.draw(canvas);
         }
@@ -178,18 +146,6 @@ public class ProgressView extends View {
 
     public void setOutBarHeight(int outBarHeight) {
         this.outBarHeight = outBarHeight;
-    }
-
-    public void setCenterBarHeight(int centerBarHeight) {
-        this.centerBarHeight = centerBarHeight;
-    }
-
-    public void setProgressBarHeight(int progressBarHeight) {
-        this.progressBarHeight = progressBarHeight;
-    }
-
-    public void setProgressColor(int progressColor) {
-        this.progressColor = progressColor;
     }
 
     public void setTitleTextColor(int titleTextColor) {
@@ -274,6 +230,13 @@ public class ProgressView extends View {
         return (int) (spValue * fontScale + 0.5f);
     }
 
+    public int[] getImageWidthHeight(){
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_location, options);
+        return new int[]{options.outWidth,options.outHeight};
+    }
+
     public void doAnimater(float start, float end) {
         objectAnimator = ObjectAnimator.ofFloat(this, "mPercent", start, end);
         objectAnimator.setDuration(1000);
@@ -281,15 +244,14 @@ public class ProgressView extends View {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 float value = (float) animation.getAnimatedValue();
-                setHeightNotInUiThread((int) value);
+                setProgressInUIThread((int) value);
             }
         });
         objectAnimator.start();
     }
 
-    public void setHeightNotInUiThread(int height) {
-        this.postion = height;
-        Log.e("lwh", "postion:" + postion);
+    public void setProgressInUIThread(int value) {
+        this.postion = value;
         this.postInvalidate();
     }
 }

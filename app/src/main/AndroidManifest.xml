@@ -42,6 +42,8 @@
         <activity android:name=".towEnResult.TowEnResultActivity"/>
         <activity android:name=".tbs.TbsActivity"/>
         <activity android:name=".progressView.ProgressActivity"/>
+        <activity android:name=".cache.CacheActivity"/>
+        <activity android:name=".cache.ImageActivity"/>
         <activity
                 android:name="com.tencent.smtt.sdk.VideoActivity"
                 android:configChanges="orientation|screenSize|keyboardHidden"
