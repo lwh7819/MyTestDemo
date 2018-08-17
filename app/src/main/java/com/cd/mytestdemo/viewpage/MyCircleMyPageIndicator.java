@@ -82,7 +82,7 @@ public class MyCircleMyPageIndicator extends View implements MyPageIndicator {
         mPaintPageFill.setColor(a.getColor(R.styleable.MyCircleMyPageIndicator_pageColor, defaultPageColor));
         mPaintStroke.setStyle(Style.STROKE);
         mPaintStroke.setColor(a.getColor(R.styleable.MyCircleMyPageIndicator_strokeColor, defaultStrokeColor));
-        mPaintStroke.setStrokeWidth(a.getDimension(R.styleable.MyCircleMyPageIndicator_strokeWidth, defaultStrokeWidth));
+        mPaintStroke.setStrokeWidth(a.getDimension(R.styleable.MyCircleMyPageIndicator_pageIndicatorStrokeWidth, defaultStrokeWidth));
         mPaintFill.setStyle(Style.FILL);
         mPaintFill.setColor(a.getColor(R.styleable.MyCircleMyPageIndicator_fillColor, defaultFillColor));
         mRadius = a.getDimension(R.styleable.MyCircleMyPageIndicator_radius, defaultRadius);

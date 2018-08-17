@@ -25,7 +25,7 @@
             app:radius="3dp"
             app:fillColor="@color/white"
             app:pageColor="@color/gray"
-            app:strokeWidth="0dp">
+            app:pageIndicatorStrokeWidth="0dp">
 
     </com.cd.mytestdemo.viewpage.MyCircleMyPageIndicator>
 

@@ -32,7 +32,7 @@
         <attr format="dimension" name="radius"/>
         <attr format="boolean" name="snap"/>
         <attr format="color" name="strokeColor"/>
-        <attr format="dimension" name="strokeWidth"/>
+        <attr format="dimension" name="pageIndicatorStrokeWidth"/>
         <attr name="android:background"/>
     </declare-styleable>
 

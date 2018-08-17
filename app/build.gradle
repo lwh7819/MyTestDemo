@@ -49,43 +49,43 @@ android {
         }
     }
 
-    productFlavors {
-        Alpha {} //自己打包测试使用
-        Tencent {} //投放应用宝市场
-        Baidu {} //投放百度市场
-        Wandoujia {} //投放豌豆荚市场
-        PP {} //投放PP助手市场
-        Qihoo {} //投放PP助手市场
-        Vivo {} //投放vivo市场
-        Oppo {} //投放oppo市场
-        Xiaomi {} //投放小米市场
-        Meizu {} //投放魅族市场
-        Huawei {} //投放华为应用市场
-        Lenovo {} //投放联想市场
-        Letv {} //投放乐视市场
-        Gionee {} //投放金立市场
-        HiMarket {} //投放安卓市场
-    }
-
-    productFlavors.all {
-        flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
-    }
-
-    applicationVariants.all { variant ->
-        variant.outputs.each { output ->
-            def oldFile = output.outputFile
-
-            if (variant.buildType.name.equals('release')) {
-                def releaseApkName = output.outputFile.name.replace(".apk", "-ver${defaultConfig.versionName}(build${defaultConfig.versionCode}).apk")
-                output.outputFile = new File(oldFile.parent, releaseApkName)
-            }
-
-            if (variant.buildType.name.equals('debug')) {
-                def debugApkName = "app_ver_debug.apk"
-                output.outputFile = new File(oldFile.parent, debugApkName)
-            }
-        }
-    }
+//    productFlavors {
+//        Alpha {} //自己打包测试使用
+//        Tencent {} //投放应用宝市场
+//        Baidu {} //投放百度市场
+//        Wandoujia {} //投放豌豆荚市场
+//        PP {} //投放PP助手市场
+//        Qihoo {} //投放PP助手市场
+//        Vivo {} //投放vivo市场
+//        Oppo {} //投放oppo市场
+//        Xiaomi {} //投放小米市场
+//        Meizu {} //投放魅族市场
+//        Huawei {} //投放华为应用市场
+//        Lenovo {} //投放联想市场
+//        Letv {} //投放乐视市场
+//        Gionee {} //投放金立市场
+//        HiMarket {} //投放安卓市场
+//    }
+//
+//    productFlavors.all {
+//        flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+//    }
+//
+//    applicationVariants.all { variant ->
+//        variant.outputs.each { output ->
+//            def oldFile = output.outputFile
+//
+//            if (variant.buildType.name.equals('release')) {
+//                def releaseApkName = output.outputFile.name.replace(".apk", "-ver${defaultConfig.versionName}(build${defaultConfig.versionCode}).apk")
+//                output.outputFile = new File(oldFile.parent, releaseApkName)
+//            }
+//
+//            if (variant.buildType.name.equals('debug')) {
+//                def debugApkName = "app_ver_debug.apk"
+//                output.outputFile = new File(oldFile.parent, debugApkName)
+//            }
+//        }
+//    }
 
 //    applicationVariants.all { variant ->
 //        variant.outputs.all {
@@ -139,4 +139,5 @@ dependencies {
     //友盟多渠道打包
     compile 'com.umeng.analytics:analytics:latest.integration'
 
+    compile 'com.lwh.dialView:dialview:1.0.1'
 }
