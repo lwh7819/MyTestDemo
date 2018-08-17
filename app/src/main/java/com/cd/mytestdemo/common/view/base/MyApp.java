@@ -2,13 +2,14 @@ package com.cd.mytestdemo.common.view.base;
 
 import android.app.Application;
 import android.content.Context;
+import android.support.multidex.MultiDexApplication;
 import android.util.Log;
 import com.tencent.smtt.sdk.QbSdk;
 
 /**
  * Created by lv.weihao on 2018/5/18.
  */
-public class MyApp extends Application {
+public class MyApp extends MultiDexApplication {
     public static Context mContext;
     @Override
     public void onCreate() {
