@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class CarouselAdapter extends BasePagerAdapter<String> {
+public class CarouselAdapter extends com.lvweihao.slideshow.BasePagerAdapter<String> {
 
     public CarouselAdapter(Context context, ArrayList<String> datas, ViewPager viewPager) {
         super(context, datas, viewPager);

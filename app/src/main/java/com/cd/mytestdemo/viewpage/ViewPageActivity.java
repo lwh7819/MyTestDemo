@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.cd.mytestdemo.R;
+import com.lvweihao.slideshow.MyCirclePageIndicator;
+
 import io.reactivex.disposables.CompositeDisposable;
 
 import java.util.ArrayList;
@@ -18,7 +20,7 @@ public class ViewPageActivity extends AppCompatActivity {
     @BindView(R.id.m_view_page)
     ViewPager mViewPage;
     @BindView(R.id.cp_circle)
-    MyCircleMyPageIndicator cpCircle;
+    MyCirclePageIndicator cpCircle;
 
     private ArrayList<String> urls = new ArrayList<>();
     private CompositeDisposable compositeDisposable;
@@ -38,7 +40,8 @@ public class ViewPageActivity extends AppCompatActivity {
 
         CarouselAdapter carouselAdapter = new CarouselAdapter(this, urls, mViewPage);
         compositeDisposable = new CompositeDisposable();
-        compositeDisposable.add(carouselAdapter.startInterval());
+//        compositeDisposable.add(carouselAdapter.startInterval());
+        carouselAdapter.startInterval(5000);
         cpCircle.setViewPager(mViewPage);
     }
 
