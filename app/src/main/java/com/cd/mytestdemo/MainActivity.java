@@ -4,8 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+
 import com.cd.mytestdemo.bluetooth.BluetoothActivity;
 import com.cd.mytestdemo.cache.ImageActivity;
 import com.cd.mytestdemo.cardview.CardViewActivity;
@@ -13,59 +12,52 @@ import com.cd.mytestdemo.dialog.DialogActivity;
 import com.cd.mytestdemo.excem.TopicActivity;
 import com.cd.mytestdemo.glide.GlideTestActivity;
 import com.cd.mytestdemo.progressView.ProgressActivity;
+import com.cd.mytestdemo.studentbox.StudentBoxActivity;
 import com.cd.mytestdemo.tbs.TbsActivity;
 import com.cd.mytestdemo.testfragment.TestFragmentActivity;
+import com.cd.mytestdemo.touchview.TouchViewActivity;
 import com.cd.mytestdemo.towEnResult.TowEnResultActivity;
 import com.cd.mytestdemo.viewpage.ViewPageActivity;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 public class MainActivity extends AppCompatActivity {
+    private static Map<Integer, Class> classMap = new HashMap<>();
+
+    static {
+        classMap.put(R.id.entry_1, GlideTestActivity.class);
+        classMap.put(R.id.entry_2, CardViewActivity.class);
+        classMap.put(R.id.entry_3, TopicActivity.class);
+        classMap.put(R.id.entry_4, TestFragmentActivity.class);
+        classMap.put(R.id.entry_5, BluetoothActivity.class);
+        classMap.put(R.id.entry_6, DialogActivity.class);
+        classMap.put(R.id.entry_7, ViewPageActivity.class);
+        classMap.put(R.id.entry_8, TowEnResultActivity.class);
+        classMap.put(R.id.entry_9, TbsActivity.class);
+        classMap.put(R.id.entry_10, ProgressActivity.class);
+        classMap.put(R.id.entry_11, ImageActivity.class);
+        classMap.put(R.id.entry_12, TouchViewActivity.class);
+        classMap.put(R.id.entry_13, StudentBoxActivity.class);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
-
     }
 
     @OnClick({R.id.entry_1, R.id.entry_2, R.id.entry_3, R.id.entry_4, R.id.entry_5, R.id.entry_6, R.id.entry_7
-            , R.id.entry_8, R.id.entry_9, R.id.entry_10, R.id.entry_11})
+            , R.id.entry_8, R.id.entry_9, R.id.entry_10, R.id.entry_11, R.id.entry_12, R.id.entry_13})
     public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.entry_1:
-                startActivity(new Intent(this, GlideTestActivity.class));
-                break;
-            case R.id.entry_2:
-                startActivity(new Intent(this, CardViewActivity.class));
-                break;
-            case R.id.entry_3:
-                startActivity(new Intent(this, TopicActivity.class));
-                break;
-            case R.id.entry_4:
-                startActivity(new Intent(this, TestFragmentActivity.class));
-                break;
-            case R.id.entry_5:
-                startActivity(new Intent(this, BluetoothActivity.class));
-                break;
-            case R.id.entry_6:
-                startActivity(new Intent(this, DialogActivity.class));
-                break;
-            case R.id.entry_7:
-                startActivity(new Intent(this, ViewPageActivity.class));
-                break;
-            case R.id.entry_8:
-                startActivity(new Intent(this, TowEnResultActivity.class));
-                break;
-            case R.id.entry_9:
-                startActivity(new Intent(this, TbsActivity.class));
-                break;
-            case R.id.entry_10:
-                startActivity(new Intent(this, ProgressActivity.class));
-                break;
-            case R.id.entry_11:
-                startActivity(new Intent(this, ImageActivity.class));
-                break;
+        for (Integer id : classMap.keySet()) {
+            if (view.getId() == id) {
+                startActivity(new Intent(this, classMap.get(id)));
+            }
         }
     }
 }
