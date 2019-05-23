@@ -4,5 +4,17 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <com.cd.mytestdemo.studentbox.StudentGroupView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.cd.mytestdemo.studentbox.StudentGroupView>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rclv_student_discuss"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </android.support.v7.widget.RecyclerView>
 
 </LinearLayout>

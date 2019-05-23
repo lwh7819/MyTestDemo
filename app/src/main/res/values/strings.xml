@@ -7,4 +7,6 @@
     <string name="password">验证码</string>
     <string name="password_hint">输入验证码</string>
     <string name="get_password">获取验证码</string>
+
+    <string name="student_group_size">（%d人）</string>
 </resources>

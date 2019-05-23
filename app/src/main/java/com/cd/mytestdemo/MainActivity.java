@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 
 import com.cd.mytestdemo.bluetooth.BluetoothActivity;
 import com.cd.mytestdemo.cache.ImageActivity;
@@ -11,6 +12,8 @@ import com.cd.mytestdemo.cardview.CardViewActivity;
 import com.cd.mytestdemo.dialog.DialogActivity;
 import com.cd.mytestdemo.excem.TopicActivity;
 import com.cd.mytestdemo.glide.GlideTestActivity;
+import com.cd.mytestdemo.hook.HookClick;
+import com.cd.mytestdemo.hook.HookViewClickUtil;
 import com.cd.mytestdemo.progressView.ProgressActivity;
 import com.cd.mytestdemo.studentbox.StudentBoxActivity;
 import com.cd.mytestdemo.tbs.TbsActivity;
@@ -26,6 +29,14 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
+    @HookClick(value = R.id.entry_1, type = 1)
+    private Button entry1;
+
+    @HookClick(value = R.id.entry_2, type = 1)
+    private Button entry2;
+
+    @HookClick(value = R.id.entry_3, type = 3)
+    private Button entry3;
     private static Map<Integer, Class> classMap = new HashMap<>();
 
     static {
@@ -49,6 +60,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        final View decorView = getWindow().getDecorView();
+        decorView.post(new Runnable() {
+            @Override
+            public void run() {
+                HookViewClickUtil.hookViews(MainActivity.this);
+            }
+        });
     }
 
     @OnClick({R.id.entry_1, R.id.entry_2, R.id.entry_3, R.id.entry_4, R.id.entry_5, R.id.entry_6, R.id.entry_7
