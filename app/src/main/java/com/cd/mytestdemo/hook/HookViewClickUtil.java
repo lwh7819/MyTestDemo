@@ -73,34 +73,16 @@ public class HookViewClickUtil {
         private final CustomClick customClick;
         private View.OnClickListener object;
 
-        private int MIN_CLICK_DELAY_TIME = 1000;
-
-        private long lastClickTime = 0;
-
         private OnClickListenerProxy(View.OnClickListener object, int type) {
             this.object = object;
-            if (type == 1) {
-                realClick = new RealClick(this.object);
-            } else {
-                realClick = new RealClick2(this.object);
-            }
+            realClick = RealClickFactory.getRealClick(type, this.object);
             proxyClick = new ProxyClick(realClick);
             customClick = (CustomClick) Proxy.newProxyInstance(CustomClick.class.getClassLoader(), realClick.getClass().getInterfaces(), proxyClick);
         }
 
         @Override
         public void onClick(View v) {
-
             customClick.click(v);
-
-//            Log.e("OnClickListenerProxy", "OnClickListenerProxy" + this.object.toString());
-//            long currentTime = Calendar.getInstance().getTimeInMillis();
-//            if (currentTime - lastClickTime > MIN_CLICK_DELAY_TIME) {
-//                lastClickTime = currentTime;
-////                if (object != null) object.onClick(v);
-//            } else {
-//                if (object != null) object.onClick(v);
-//            }
         }
     }
 }

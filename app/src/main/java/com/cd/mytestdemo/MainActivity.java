@@ -14,6 +14,7 @@ import com.cd.mytestdemo.excem.TopicActivity;
 import com.cd.mytestdemo.glide.GlideTestActivity;
 import com.cd.mytestdemo.hook.HookClick;
 import com.cd.mytestdemo.hook.HookViewClickUtil;
+import com.cd.mytestdemo.hook.RealClickFactory;
 import com.cd.mytestdemo.progressView.ProgressActivity;
 import com.cd.mytestdemo.studentbox.StudentBoxActivity;
 import com.cd.mytestdemo.tbs.TbsActivity;
@@ -29,13 +30,13 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
-    @HookClick(value = R.id.entry_1, type = 1)
+    @HookClick(value = R.id.entry_1, type = RealClickFactory.FAST_DOUBLE_CLICK_ENTRY_TYPE)
     private Button entry1;
 
-    @HookClick(value = R.id.entry_2, type = 1)
+    @HookClick(value = R.id.entry_2, type = RealClickFactory.FAST_DOUBLE_CLICK_IGNORE_TYPE)
     private Button entry2;
 
-    @HookClick(value = R.id.entry_3, type = 3)
+    @HookClick(value = R.id.entry_3, type = RealClickFactory.OTHER_CLICK_IGNORE_TYPE)
     private Button entry3;
     private static Map<Integer, Class> classMap = new HashMap<>();
 
