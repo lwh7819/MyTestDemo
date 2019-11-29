@@ -6,19 +6,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.cd.mytestdemo.animate.AnimateActivity;
 import com.cd.mytestdemo.bluetooth.BluetoothActivity;
 import com.cd.mytestdemo.cache.ImageActivity;
 import com.cd.mytestdemo.cardview.CardViewActivity;
 import com.cd.mytestdemo.dialog.DialogActivity;
 import com.cd.mytestdemo.excem.TopicActivity;
+import com.cd.mytestdemo.exoplayer.ExoPlayerActivity;
 import com.cd.mytestdemo.glide.GlideTestActivity;
 import com.cd.mytestdemo.hook.HookClick;
 import com.cd.mytestdemo.hook.HookViewClickUtil;
 import com.cd.mytestdemo.hook.RealClickFactory;
 import com.cd.mytestdemo.progressView.ProgressActivity;
+import com.cd.mytestdemo.savelogcat.SaveCustomLogcat;
 import com.cd.mytestdemo.studentbox.StudentBoxActivity;
 import com.cd.mytestdemo.tbs.TbsActivity;
 import com.cd.mytestdemo.testfragment.TestFragmentActivity;
+import com.cd.mytestdemo.textureview.TextureViewActivity;
 import com.cd.mytestdemo.touchview.TouchViewActivity;
 import com.cd.mytestdemo.towEnResult.TowEnResultActivity;
 import com.cd.mytestdemo.viewpage.ViewPageActivity;
@@ -54,6 +58,9 @@ public class MainActivity extends AppCompatActivity {
         classMap.put(R.id.entry_11, ImageActivity.class);
         classMap.put(R.id.entry_12, TouchViewActivity.class);
         classMap.put(R.id.entry_13, StudentBoxActivity.class);
+        classMap.put(R.id.entry_14, AnimateActivity.class);
+        classMap.put(R.id.entry_15, TextureViewActivity.class);
+        classMap.put(R.id.entry_16, ExoPlayerActivity.class);
     }
 
     @Override
@@ -68,10 +75,12 @@ public class MainActivity extends AppCompatActivity {
                 HookViewClickUtil.hookViews(MainActivity.this);
             }
         });
+
+        SaveCustomLogcat.getInstance().saveLog("",  "id: 1\nname: lvweihao" + "\nerrorMessage: load fail");
     }
 
     @OnClick({R.id.entry_1, R.id.entry_2, R.id.entry_3, R.id.entry_4, R.id.entry_5, R.id.entry_6, R.id.entry_7
-            , R.id.entry_8, R.id.entry_9, R.id.entry_10, R.id.entry_11, R.id.entry_12, R.id.entry_13})
+            , R.id.entry_8, R.id.entry_9, R.id.entry_10, R.id.entry_11, R.id.entry_12, R.id.entry_13, R.id.entry_14, R.id.entry_15, R.id.entry_16})
     public void onViewClicked(View view) {
         for (Integer id : classMap.keySet()) {
             if (view.getId() == id) {

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="1200dp"
+    android:layout_height="600dp"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+
+    <LinearLayout
+        android:layout_width="600dp"
+        android:layout_height="600dp"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/view_1"
+            android:layout_width="600dp"
+            android:layout_height="40dp"
+            android:background="@color/dark_gray" />
+
+        <com.cd.mytestdemo.dialog.MyRecyclerView
+            android:id="@+id/listView_1"
+            android:layout_width="600dp"
+            android:layout_height="560dp"
+            android:background="@color/colorAccent" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_view_2"
+        android:layout_width="600dp"
+        android:layout_height="600dp"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/view_2"
+            android:layout_width="600dp"
+            android:layout_height="40dp"
+            android:background="@color/dark_gray" />
+
+        <com.cd.mytestdemo.dialog.MyRecyclerView
+            android:id="@+id/listView_2"
+            android:layout_width="600dp"
+            android:layout_height="560dp"
+            android:background="@color/colorPrimary" />
+    </LinearLayout>
+
+</LinearLayout>

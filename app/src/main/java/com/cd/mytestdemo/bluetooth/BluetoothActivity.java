@@ -14,16 +14,21 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+import android.widget.Toast;
+
 import com.cd.mytestdemo.R;
 import com.cd.mytestdemo.common.view.util.PopUtil;
 
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by lv.weihao on 2018/5/18.
@@ -45,6 +50,7 @@ public class BluetoothActivity extends AppCompatActivity {
     private BluetoothAdapter bluetoothAdapter;
     private CommonRecycleAdapter commonRecycleAdapter;
     private List<BluetoothDevice> mList;
+    private BluetoothSocket connectSocket;
 
     private static final UUID BT_UUID = UUID.fromString("02001101-0001-1000-8080-00805F9BA9BA");
 
@@ -138,10 +144,31 @@ public class BluetoothActivity extends AppCompatActivity {
         try {
             //创建socket
             BluetoothSocket bluetoothSocket = device.createRfcommSocketToServiceRecord(BT_UUID);
-            conntectThread = new ConnectThread(bluetoothSocket, true, view);
+            connectSocket = bluetoothSocket;
+            conntectThread = new ConnectThread(device, bluetoothSocket, true, view);
             conntectThread.start();
         } catch (Exception e) {
 
+        }
+    }
+
+    private void getData() {
+        try {
+            InputStream inputStream = connectSocket.getInputStream();
+            OutputStream outputStream = connectSocket.getOutputStream();
+
+            byte[] buffer = new byte[1024];
+            int bytes;
+            while (true) {
+                bytes = inputStream.read(buffer);
+                if (bytes > 0) {
+                    final byte[] data = new byte[bytes];
+                    System.arraycopy(buffer, 0, data, 0, bytes);
+                    Toast.makeText(this, new String(data), Toast.LENGTH_LONG).show();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -160,6 +187,7 @@ public class BluetoothActivity extends AppCompatActivity {
                 stopSearch();
                 break;
             case R.id.m_btn_send:
+                getData();
                 break;
             case R.id.m_recycler_view:
                 break;

@@ -54,6 +54,9 @@
         <activity android:name=".cache.ImageActivity"/>
         <activity android:name=".touchview.TouchViewActivity"/>
         <activity android:name=".studentbox.StudentBoxActivity"/>
+        <activity android:name=".animate.AnimateActivity"/>
+        <activity android:name=".textureview.TextureViewActivity"/>
+        <activity android:name=".exoplayer.ExoPlayerActivity"/>
         <activity
                 android:name="com.tencent.smtt.sdk.VideoActivity"
                 android:configChanges="orientation|screenSize|keyboardHidden"

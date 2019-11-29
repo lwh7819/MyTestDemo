@@ -36,9 +36,9 @@ public class BaseDialog extends Dialog implements View.OnClickListener{
         Display display = wm.getDefaultDisplay();
         WindowManager.LayoutParams lp = window.getAttributes();
         window.setGravity(Gravity.CENTER);
-        lp.width = display.getWidth() * 4/5;
-        window.setAttributes(lp);
-        setCancelable(false);
+//        lp.width = display.getWidth() * 4/5;
+//        window.setAttributes(lp);
+        setCancelable(true);
 
         for (int id : listernerIDs) {
             findViewById(id).setOnClickListener(this);
